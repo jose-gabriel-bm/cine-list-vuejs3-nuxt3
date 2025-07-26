@@ -1,6 +1,7 @@
 <template>
   <div
     class="
+      mt-14
       relative w-full max-w-7xl mx-auto
       overflow-hidden rounded-2xl shadow-lg cursor-pointer
       border-2 border-transparent hover:border-white
@@ -14,6 +15,7 @@
         v-for="(image, index) in images"
         :key="index"
         class="w-full flex-shrink-0 relative"
+        @click="navigateTo(image.link)"
       >
         <img
           :src="image.src"
@@ -32,7 +34,7 @@
             {{ image.title }}
           </h2>
           <p class="text-sm sm:text-base md:text-lg mt-2 drop-shadow">
-            {{ image.subtitle.join(', ') }}
+            {{ image.subtitle.join(', ') }}<FavoriteToggle :id="image?.id" />
           </p>
         </div>
       </div>
@@ -81,6 +83,7 @@
 </template>
 
 <script setup>
+import FavoriteToggle from '~/components/ui/FavoriteToggle.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({

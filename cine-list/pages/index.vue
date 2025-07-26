@@ -2,7 +2,6 @@
   <div class="p-4">
     <ImageCarousel :images="carouselImages" />
     <BodyIndex/>
-
   </div>
 </template>
 
@@ -44,7 +43,9 @@ const carouselImages = computed(() => {
   return nowPlayingData.value?.results
     ?.filter(filme => filme.backdrop_path)
     ?.map(filme => ({
+      id:filme.id,
       src: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${filme.backdrop_path}`,
+      link: `/item/${filme.id}`,
       title: filme.title,
       subtitle: filme.genre_ids
         .map(id => genreMap.value[id])

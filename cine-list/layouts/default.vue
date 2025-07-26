@@ -1,7 +1,7 @@
 <template>
   <div> 
     <Header></Header>
-    <main class="bg-black bg-opacity-75 min-h-screen pt-12">
+    <main class="bg-black bg-opacity-75 min-h-screen">
       <NuxtPage />
     </main>
   </div>

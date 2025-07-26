@@ -1,7 +1,7 @@
 <template>
   <CardCarousel title="Populares" :items="popularCards"/>
   <CardCarousel title="Estreiam em Breve" :items="upcomingCards"/>
-  <CardCarousel title="Séries exibidas hoje" :items="todaySeriesCards"/>
+  <CardCarousel title="Mais Bem Avaliados" :items="topRated"/>
 </template>
 <script setup>
 
@@ -12,19 +12,21 @@ const BASE_URL = 'https://api.themoviedb.org/3'
 const LANGUAGE = 'pt-BR'
 
 
-/* Serie exibidas hj */
-const { data: todaySeriesData } = await useFetch(`${BASE_URL}/tv/airing_today?language=pt-BR&page=1`, {
+/* Top Rated*/
+const { data: topRatedData } = await useFetch(`${BASE_URL}/movie/top_rated?language=pt-BR&page=1`, {
   query: {
     api_key: API_KEY,
     language: LANGUAGE,
   },
 })
 
-const todaySeriesCards = computed(() => {
+const topRated = computed(() => {
   return (
-    todaySeriesData.value?.results?.map((serie) => ({
-      title: serie.name,
-      image: `https://image.tmdb.org/t/p/w500${serie.backdrop_path || serie.poster_path}`,
+    topRatedData.value?.results?.map((rated) => ({
+      title: rated.title,
+      image: `https://image.tmdb.org/t/p/w500${rated.backdrop_path || rated.poster_path}`,
+      link: `/item/${rated.id}`,
+      id:rated.id
     })) || []
   )
 })
@@ -42,6 +44,8 @@ const upcomingCards = computed(() => {
     upcomingData.value?.results?.map((movie) => ({
       title: movie.title,
       image: `https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path}`,
+      link: `/item/${movie.id}`,
+      id:movie.id
     })) || []
   )
 })
@@ -60,6 +64,8 @@ const popularCards = computed(() => {
   return popularData.value.results.map((movie) => ({
     title: movie.title,
     image: `https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path}`,
+    link: `/item/${movie.id}`,
+    id:movie.id
   }))
 })
 

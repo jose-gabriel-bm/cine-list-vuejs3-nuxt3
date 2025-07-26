@@ -43,6 +43,7 @@
             transition-transform duration-300 transform hover:-translate-y-1
             select-none
           "
+          @click="navigateTo(card.link)"
         >
           <img
             :src="card.image"
@@ -53,7 +54,7 @@
           <h3
             class="absolute bottom-4 left-4 right-4 text-white text-sm sm:text-base font-semibold drop-shadow-md px-2"
           >
-            {{ card.title }}
+            {{ card.title }} <FavoriteToggle :id="card?.id" />
           </h3>
         </div>
       </div>
@@ -62,6 +63,7 @@
 </template>
 
 <script setup>
+import FavoriteToggle from '~/components/ui/FavoriteToggle.vue'
 import { ref, onMounted } from 'vue'
 
 defineProps({
