@@ -16,17 +16,17 @@ import { StarIcon as SolidStar } from '@heroicons/vue/24/solid'
 import { StarIcon as OutlinedStar } from '@heroicons/vue/24/outline'
 
 const props = defineProps({
-  id: {
-    type: Number,
+  movie: {
+    type: Object,
     required: true
   }
 })
 
 const favorites = useFavoritesStore()
-
-const isFavorited = computed(() => favorites.isFavorite(props.id))
+const isFavorited = computed(() => favorites.isFavorite(props.movie.id))
 
 function toggle() {
-  favorites.toggleFavorite(props.id)
+  favorites.toggleFavorite(props.movie)
 }
+
 </script>

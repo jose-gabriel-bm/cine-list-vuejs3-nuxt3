@@ -28,7 +28,11 @@
           >
             {{ genre.name }}
           </span>
-          <FavoriteToggle :id="details?.id" />
+          <FavoriteToggle :movie="{
+            id: details.id,
+            title: details.title,
+            image:`https://image.tmdb.org/t/p/w500${details.poster_path}`
+          }" />
         </div>
         <p class="text-lg leading-relaxed text-gray-200">
           {{ details?.overview }}

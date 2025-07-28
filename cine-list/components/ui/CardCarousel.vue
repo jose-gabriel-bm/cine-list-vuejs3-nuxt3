@@ -54,7 +54,7 @@
           <h3
             class="absolute bottom-4 left-4 right-4 text-white text-sm sm:text-base font-semibold drop-shadow-md px-2"
           >
-            {{ card.title }} <FavoriteToggle :id="card?.id" />
+            {{ card.title }}           
           </h3>
         </div>
       </div>
@@ -63,7 +63,6 @@
 </template>
 
 <script setup>
-import FavoriteToggle from '~/components/ui/FavoriteToggle.vue'
 import { ref, onMounted } from 'vue'
 
 defineProps({

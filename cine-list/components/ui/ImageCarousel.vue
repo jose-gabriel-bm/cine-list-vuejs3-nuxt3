@@ -34,7 +34,7 @@
             {{ image.title }}
           </h2>
           <p class="text-sm sm:text-base md:text-lg mt-2 drop-shadow">
-            {{ image.subtitle.join(', ') }}<FavoriteToggle :id="image?.id" />
+            {{ image.subtitle.join(', ') }}      
           </p>
         </div>
       </div>
@@ -83,7 +83,6 @@
 </template>
 
 <script setup>
-import FavoriteToggle from '~/components/ui/FavoriteToggle.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
