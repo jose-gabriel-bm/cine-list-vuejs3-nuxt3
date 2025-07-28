@@ -31,7 +31,8 @@
 
 <script setup>
   definePageMeta({
-    middleware: 'auth'
+    middleware: 'auth',
+    title: 'Meus Favoritos - Cine List'
   })
 
   import { useFavoritesStore } from '@/stores/favorites'

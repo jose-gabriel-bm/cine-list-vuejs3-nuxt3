@@ -13,6 +13,13 @@ const API_KEY = 'beed4e65bca0365111bd1076df78d4aa'
 const BASE_URL = 'https://api.themoviedb.org/3'
 const LANGUAGE = 'pt-BR'
 
+useHead({
+  title: 'Lista de Filmes',
+  meta: [
+    { name: 'description', content: 'Confira os filmes em exibição no momento.' }
+  ]
+})
+
 const fetchOptions = {
   method: 'GET',
   headers: {

@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+
 import FavoriteToggle from '~/components/ui/FavoriteToggle.vue'
 import CardCarousel from '~/components/ui/CardCarousel.vue'
 
@@ -55,6 +56,7 @@ const route = useRoute()
 const API_KEY = 'beed4e65bca0365111bd1076df78d4aa'
 const BASE_URL = 'https://api.themoviedb.org/3'
 const LANGUAGE = 'pt-BR'
+
 
 /* Busca os Detalhes */
 const { data: details } = await useFetch(`${BASE_URL}/movie/${route.params.id}`, {
@@ -86,5 +88,14 @@ const popularCards = computed(() => {
 const getPosterUrl = (path) => `https://image.tmdb.org/t/p/w500${path}`
 const getBackdropUrl = (path) => `https://image.tmdb.org/t/p/original${path}`
 const getYear = (date) => date ? new Date(date).getFullYear() : ''
+
+useHead({
+  title: details.value?.title || 'Detalhes do Filme',
+  meta: [
+    { name: 'description', content: details.value?.overview || '' },
+    { property: 'og:title', content: details.value?.title || '' },
+    { property: 'og:description', content: details.value?.overview || '' },
+  ]
+})
 
 </script>

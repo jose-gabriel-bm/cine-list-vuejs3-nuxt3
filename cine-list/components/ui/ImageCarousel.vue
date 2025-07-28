@@ -19,7 +19,8 @@
       >
         <img
           :src="image.src"
-          alt="Imagem do carrossel"
+          :alt="image.title || 'Imagem do carrossel'"
+          loading="lazy"
           class="w-full h-[40vw] sm:h-[300px] md:h-[400px] lg:h-[350px] object-cover"
           draggable="false"
         />

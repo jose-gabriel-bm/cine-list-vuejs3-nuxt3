@@ -47,7 +47,8 @@
         >
           <img
             :src="card.image"
-            alt="card image"
+            :alt="card.alt || card.title || 'Card image'"
+            loading="lazy"
             class="absolute inset-0 w-full h-full object-cover object-top rounded-lg"
           />
           <div class="absolute inset-0 bg-black bg-opacity-20 rounded-lg"></div>
